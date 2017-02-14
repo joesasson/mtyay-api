@@ -10,13 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213183025) do
+ActiveRecord::Schema.define(version: 20170214185313) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_interests", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "profile_purposes", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "purpose_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.text     "bio"
+    t.string   "picture"
+    t.string   "zipcode"
+    t.string   "phone"
+    t.integer  "login_count"
+    t.datetime "last_login"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "facebook"
+    t.string   "instagram"
+    t.string   "goodreads"
+    t.string   "skype"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "purposes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

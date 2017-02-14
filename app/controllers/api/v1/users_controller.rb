@@ -1,29 +1,29 @@
 module Api::V1
-  class UsersController < ApplicationController
-    
-    def create
-      @new_user = User.new(user_params)
+  class AccountsController < ApplicationController
 
-      if @new_user.save
-        render json: @new_user, status: 201
-      
+    def create
+      @new_account = Account.new(account_params)
+
+      if @new_account.save
+        render json: @new_account, status: 201
+
       else
         #consider adding error message here
         render status: 403
       end
-   
+
     end
 
     def show
-      @user = User.find(params[:id])
-      render json: @user, serializer: UserSerializer
+      @account = Account.find(params[:id])
+      render json: @account, serializer: AccountSerializer
     end
-  
+
   private
-    def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation)
+    def account_params
+        params.require(:account).permit(:email, :password, :password_confirmation)
     end
-  
+
 
 
   end
