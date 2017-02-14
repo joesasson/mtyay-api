@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     namespace :v1 do
+      resources :accounts, :profiles, :interests, :purposes,
+      :commutes, :stations, only: [:create, :show]
       resources :accounts, only: [:create, :show]
       post 'signup', to: 'accounts#create'
     end

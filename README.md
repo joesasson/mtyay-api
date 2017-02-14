@@ -56,3 +56,21 @@ We need to find a better name for this project, it's just too hard to type out a
 - Other user can accept a request and a ride will be created
 - Once two users match, both of their private profiles will be available to each other so that they can set a place to meet
 - Users can report another user if their experience with that user made them uncomfortable or the other user violated any of the rules.
+
+## Domain Modeling
+
+Account has one profile
+Profile has many interests
+Interest has many profiles
+ProfileInterests belongs to profile and interest
+Profile has many purpose
+Purpose has many profiles
+ProfilePurpose belongs to profile and interest
+
+
+Profile has many commutes
+
+
+Commutes belongs to profile
+Commutes belongs to station
+Station has many commutes

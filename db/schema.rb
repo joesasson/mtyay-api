@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214185313) do
+ActiveRecord::Schema.define(version: 20170214194133) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "commutes", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "origin_id"
+    t.integer  "destination_id"
+    t.string   "time"
+    t.string   "nickname"
+    t.boolean  "available"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "interests", force: :cascade do |t|
@@ -62,6 +73,23 @@ ActiveRecord::Schema.define(version: 20170214185313) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "mta_id"
+    t.text     "gps"
+    t.string   "line"
+    t.text     "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
