@@ -2,14 +2,13 @@ module Api::V1
   class AccountsController < ApplicationController
 
     def create
-      @new_account = Account.new(account_params)
-
-      if @new_account.save
-        render json: @new_account, status: 201
-
+      @account = Account.new(account_params)
+      if @account.save
+        jwt = Auth.encrypt({ account_id: @account.id })
+        render json: { jwt: jwt, id: @account.id, email: @account.email, status: 201 }
       else
-        #consider adding error message here
-        render status: 403
+        error = @account.save
+        render json: { errors: @account.errors.full_messages }, status: 403
       end
 
     end
@@ -19,14 +18,17 @@ module Api::V1
       render json: @account, serializer: AccountSerializer
     end
 
+    def index
+      @accounts = Account.all
+      render json: @accounts
+    end
+
   private
     def account_params
-        params.require(:account).permit(:email, :password, :password_confirmation)
+        params.permit(:email, :password, :password_confirmation)
     end
 
 
 
   end
 end
-
-private
