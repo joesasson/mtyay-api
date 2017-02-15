@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       # :commutes, :stations, only: [:create, :show]
       # resources :accounts, only: [:create, :show]
       resources :accounts, only: [:show, :index]
+      resources :profiles, only: [:create, :show]
       post 'signup', to: 'accounts#create'
     end
   end
