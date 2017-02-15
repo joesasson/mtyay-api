@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       # resources :accounts, only: [:create, :show]
       resources :accounts, only: [:show, :index]
       resources :profiles, only: [:create, :show]
+      resources :stations, only: [:show, :index]
+      resources :commutes, only: [:create, :show, :index]
       post 'signup', to: 'accounts#create'
     end
   end

@@ -1,5 +1,5 @@
 module Api::V1
-  class ProfilesController < ApplicationController
+  class CommutesController < ApplicationController
     def create
       token = request.headers['HTTP_AUTHORIZATION']
       account_info = Auth.decode(token)
@@ -12,9 +12,7 @@ module Api::V1
 
     private
 
-    def profile_params
-      params.require(:profile).permit(:name, :bio, :zipcode, :phone,
-      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype)
+    def commute_params
     end
 
   end
