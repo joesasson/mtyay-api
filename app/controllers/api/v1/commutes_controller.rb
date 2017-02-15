@@ -14,8 +14,15 @@ module Api::V1
 
     def index
       @account = current_account
-      @commutes = Commute.where(profile_id: @account.profile.id)
-      render json: @commutes
+      if params[:matches]
+        #THIS DOESNT WORK!!!!!!!!!!!!!!!!!!!!!!!!!
+        @stations = @account.profile.my_origin_stations
+        #Person --> commutes --> stations where station is part of @stations
+        @matches = Commute.where(profile_id: @account.profile.id)
+      else
+        @commutes = Commute.where(profile_id: @account.profile.id)
+        render json: @commutes
+      end
     end
 
     private

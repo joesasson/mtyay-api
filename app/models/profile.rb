@@ -6,4 +6,10 @@ class Profile < ApplicationRecord
   has_many :interests, through: :profile_interests
   has_many :profile_purposes
   has_many :purposes, through: :profile_purposes
+
+  def my_origin_stations
+    self.commutes.collect do |commute|
+      commute.origin
+    end
+  end
 end
