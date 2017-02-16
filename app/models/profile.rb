@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
 
   def my_origin_stations
     self.commutes.collect do |commute|
-      commute.origin
+      commute.origin.id
     end
   end
 end
