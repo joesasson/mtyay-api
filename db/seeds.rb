@@ -974,7 +974,7 @@ pattys_commute = Commute.create({
   time: '09:30',
   origin_id: 1,
   destination_id: 2,
-  profile_id: 1,
+  profile_id: patty.id,
   available: true
 })
 
@@ -983,7 +983,7 @@ pattys_commute_back = Commute.create({
   time: '06:30',
   destination_id: origin_station.id,
   origin_id: destination_station.id,
-  profile_id: matt.id,
+  profile_id: patty.id,
   available: true
   })
 
@@ -1000,7 +1000,7 @@ joes_commute = Commute.create({
   time: '09:30',
   origin_id: 1,
   destination_id: 2,
-  profile_id: 1,
+  profile_id: joe.id,
   available: true
 })
 
@@ -1009,7 +1009,7 @@ joes_commute_back = Commute.create({
   time: '06:30',
   destination_id: origin_station.id,
   origin_id: destination_station.id,
-  profile_id: matt.id,
+  profile_id: joe.id,
   available: true
   })
 
