@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214194133) do
+ActiveRecord::Schema.define(version: 20170216185216) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20170214194133) do
     t.boolean  "available"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "connections", force: :cascade do |t|
+    t.integer  "requester_commute_id"
+    t.integer  "requestee_commute_id"
+    t.boolean  "accepted",             default: false
+    t.datetime "requested_at"
+    t.datetime "accepted_at"
+    t.text     "invite_note"
+    t.boolean  "denied",               default: false
+    t.datetime "denied_at"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "interests", force: :cascade do |t|
