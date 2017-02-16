@@ -13,17 +13,9 @@ module Api::V1
     end
 
     def index
-      @account = current_account
-      if params[:matches]
-        @my_commutes = @account.profile.commutes  #all of matts commutes
-        @commutes = @my_commutes.map do |commute|
-          Commute.joins(:profile).where("origin_id = ? AND time= ?", commute.origin_id, commute.time).where.not("profile_id = ?", @account.profile.id)
-        end
-        render json: @commutes.flatten.uniq
-      else
+        @account = current_account
         @commutes = Commute.where(profile_id: @account.profile.id)
         render json: @commutes
-      end
     end
 
     private
