@@ -1,4 +1,4 @@
 class ProfileSerializer < ActiveModel::Serializer
-  attributes :name, :id, :bio, :phone, :zipcode
+  attributes :name, :bio, :zipcode
   has_many :commutes
 end
