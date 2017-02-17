@@ -10,6 +10,12 @@ module Api::V1
       end
     end
 
+    def show
+      @profile = Profile.find(params[:id])
+      render json: @profile
+    end
+
+
     # def index
     #   @account = current_account
     #
