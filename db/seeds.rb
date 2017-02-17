@@ -917,14 +917,22 @@ seed_stations.each do |station|
 end
 
 matt = Account.create({email: 'mjfender@gmail.com', password: '1234'})
+patty = Account.create({email: 'patty@gmail.com', password: '1234'})
+joe = Account.create({email: 'joe@gmail.com', password: '1234'})
 
 matt_profile = Profile.create({account_id: 1, name: 'Matt Fender',
   bio: 'Punny guy living in Hamilton Heights', phone: '555-555-5555'})
+patty_profile = Profile.create({account_id: 2, name: 'Patty',
+  bio: 'Punny girl living in Hamilton Heights', phone: '555-555-5555'})
+joe_profile = Profile.create({account_id: 3, name: 'Joe',
+  bio: 'Sunny guy living in Crooklyn', phone: '555-555-5555'})
 
 matt.profile = matt_profile
+patty.profile = patty_profile
+joe.profile = joe_profile
 
-purposes = Purpose.create([{name: "Making friends"}, {name: "Networking"}, {name: "Finding new business associates"}])
-interests = Interest.create([{name: "Music"}, {name: "Arts"}, {name: "YA Fiction"}, {name: "Tech"}, {name: "Food"}, {name: "Sports"}])
+Purpose.create([{name: "Making friends"}, {name: "Networking"}, {name: "Finding new business associates"}])
+Interest.create([{name: "Music"}, {name: "Arts"}, {name: "YA Fiction"}, {name: "Tech"}, {name: "Food"}, {name: "Sports"}])
 
 matt_profile.interests << Interest.all.first
 matt_profile.interests << Interest.all[1]
@@ -950,4 +958,83 @@ matts_commute_back = Commute.create({
   origin_id: destination_station.id,
   profile_id: matt.id,
   available: true
+  })
+
+
+patty_profile.interests << Interest.all.first
+patty_profile.interests << Interest.all[1]
+patty_profile.purposes << Purpose.all.first
+patty_profile.purposes << Purpose.all[1]
+origin_station = Station.all.first
+destination_station = Station.all[1]
+
+
+pattys_commute = Commute.create({
+  nickname: 'morning commute',
+  time: '09:30',
+  origin_id: 1,
+  destination_id: 2,
+  profile_id: patty.id,
+  available: true
+})
+
+pattys_commute_back = Commute.create({
+  nickname: 'night commute',
+  time: '06:30',
+  destination_id: origin_station.id,
+  origin_id: destination_station.id,
+  profile_id: patty.id,
+  available: true
+  })
+
+joe_profile.interests << Interest.all.first
+joe_profile.interests << Interest.all[1]
+joe_profile.purposes << Purpose.all.first
+joe_profile.purposes << Purpose.all[1]
+origin_station = Station.all.first
+destination_station = Station.all[1]
+
+
+joes_commute = Commute.create({
+  nickname: 'morning commute',
+  time: '09:30',
+  origin_id: 1,
+  destination_id: 2,
+  profile_id: joe.id,
+  available: true
+})
+
+joes_commute_back = Commute.create({
+  nickname: 'night commute',
+  time: '06:30',
+  destination_id: origin_station.id,
+  origin_id: destination_station.id,
+  profile_id: joe.id,
+  available: true
+  })
+
+  outstanding_patty_matt_connection = Connection.create({
+    requester_commute_id: pattys_commute.id,
+    requestee_commute_id: matts_commute.id,
+    invite_note: "Hi Matt, I noticed that you are a very punny individual, do you want to TRAIN together? If so, drop me a LINE!!",
+    requested_at: Time.now
+  })
+
+
+  accepted_patty_joe_connection = Connection.create({
+    requester_commute_id: pattys_commute.id,
+    requestee_commute_id: joes_commute.id,
+    invite_note: "Hi Joe, let's take the train together!",
+    requested_at: Time.now,
+    accepted: true,
+    accepted_at: Time.now + 1
+  })
+
+  denied_joe_matt_connection = Connection.create({
+    requester_commute_id: joes_commute.id,
+    requestee_commute_id: matts_commute.id,
+    invite_note: "Heyyyyy Matt, I am a Nigerian Prince YOU have inherited my father's fotune, ride the train with me and I will tell you all about it. Bring you checking account info so that we can make a deposit",
+    requested_at: Time.now,
+    denied: true,
+    denied_at: Time.now + 1
   })

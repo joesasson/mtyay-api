@@ -13,9 +13,9 @@ module Api::V1
     end
 
     def index
-      @account = current_account
-      @commutes = Commute.where(profile_id: @account.profile.id)
-      render json: @commutes
+        @account = current_account
+        @commutes = Commute.where(profile_id: @account.profile.id)
+        render json: @commutes
     end
 
     private
