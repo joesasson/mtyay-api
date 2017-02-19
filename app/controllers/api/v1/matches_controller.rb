@@ -10,9 +10,12 @@ module Api::V1
       else
         @my_commutes = @account.profile.commutes  #all of matts commutes
         @commutes = @my_commutes.map do |commute|
-          Commute.joins(:profile).where("origin_id = ? AND time= ?", commute.origin_id, commute.time).where.not("profile_id = ?", @account.profile.id).flatten!
+          Commute.joins(:profile).where("origin_id = ? AND time= ?", commute.origin_id, commute.time).where.not("profile_id = ?", @account.profile.id)
         end
 
+        if @my_commutes.length > 0
+          @commutes.flatten!
+        end
       end
         render json: @commutes.uniq
     end
