@@ -4,7 +4,6 @@ module Api::V1
       token = request.headers['HTTP_AUTHORIZATION']
       account_info = Auth.decode(token)
       @profile = Profile.new(profile_params)
-      puts(account_info)
       @profile.account_id = account_info['account_id']
       if @profile.save
         render json: @profile

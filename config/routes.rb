@@ -9,7 +9,8 @@ Rails.application.routes.draw do
       resources :profiles, only: [:create, :show, :index]
       resources :stations, only: [:show, :index]
       resources :commutes, only: [:create, :show, :index]
-      resources :connections, only: [:create, :show, :index]
+      resources :connections, only: [:create, :show, :index, :update]
+      get 'requests', to: 'connections#requests'
       get 'matches', to: 'matches#index'
       post 'signup', to: 'accounts#create'
       post 'login', to: 'sessions#create'
