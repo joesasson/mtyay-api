@@ -13,7 +13,6 @@ class ApplicationController < ActionController::API
   end
 
   def is_connection?
-    # binding.pry
     # @connections = current_account.profile.connections.
     false
   end
