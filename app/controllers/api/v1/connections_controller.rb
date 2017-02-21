@@ -54,7 +54,7 @@ module Api::V1
     private
 
     def connection_params
-      params.require(:connection).permit(:requester_commute_id, :requestee_commute_id, :accepted, :requested_at, :accepted_at, :denied, :denied_at)
+      params.require(:connection).permit(:requester_commute_id, :requestee_commute_id, :accepted, :requested_at, :accepted_at, :denied, :denied_at, :invite_note)
     end
   end
 end

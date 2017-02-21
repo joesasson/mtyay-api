@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216185216) do
+ActiveRecord::Schema.define(version: 20170220155143) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170216185216) do
     t.integer  "account_id"
     t.string   "name"
     t.text     "bio"
-    t.string   "picture"
+    t.string   "picture",     default: "https://res.cloudinary.com/djlbddlel/image/upload/v1487710238/rmwmbqgumg4iumczmy8i.png"
     t.string   "zipcode"
     t.string   "phone"
     t.integer  "login_count"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20170216185216) do
     t.string   "instagram"
     t.string   "goodreads"
     t.string   "skype"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                                                                                     null: false
+    t.datetime "updated_at",                                                                                                     null: false
   end
 
   create_table "purposes", force: :cascade do |t|
