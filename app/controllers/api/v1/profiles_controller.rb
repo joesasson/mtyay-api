@@ -15,6 +15,12 @@ module Api::V1
       render json: @profile
     end
 
+    def update
+      @profile = Profile.find(params[:id])
+      @new = @profile.update(picture: params[:profile][:picture])
+      render json: @profile
+    end
+
 
     # def index
     #   @account = current_account
@@ -32,7 +38,7 @@ module Api::V1
 
     def profile_params
       params.require(:profile).permit(:name, :bio, :zipcode, :phone,
-      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype)
+      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype, :url)
     end
 
   end

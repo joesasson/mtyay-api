@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       # :commutes, :stations, only: [:create, :show]
       # resources :accounts, only: [:create, :show]
       resources :accounts, only: [:show, :index]
-      resources :profiles, only: [:create, :show, :index]
+      resources :profiles, only: [:create, :show, :index, :update]
       resources :stations, only: [:show, :index]
       resources :commutes, only: [:create, :show, :index]
       resources :connections, only: [:create, :show, :index, :update]
