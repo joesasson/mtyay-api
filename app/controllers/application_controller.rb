@@ -8,6 +8,16 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def is_current_account?
+    params[:id].to_i == current_account.id
+  end
+
+  def is_connection?
+    # binding.pry
+    # @connections = current_account.profile.connections.
+    false
+  end
+
   # def authorize!
   #   if !current_account
   #     redirect '/'

@@ -13,7 +13,11 @@ module Api::V1
 
     def show
       @profile = Profile.find(params[:id])
-      render json: @profile
+      if is_connection? || is_current_account? 
+        render json: @profile
+      else
+        render json: @profile, serializer: publicProfileSerializer
+      end
     end
 
 
