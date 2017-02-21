@@ -8,6 +8,10 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def current_profile
+      current_account.profile
+  end
+
   # def authorize!
   #   if !current_account
   #     redirect '/'
