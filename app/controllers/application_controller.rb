@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_profile
-      current_account.profile
+    current_account.profile
   end
 
   # def authorize!
