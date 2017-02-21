@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :account
   has_many :commutes
+  has_many :connections, through: :commutes
   has_many :stations, through: :commutes
   has_many :profile_interests
   has_many :interests, through: :profile_interests
