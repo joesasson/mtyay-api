@@ -14,7 +14,11 @@ class ApplicationController < ActionController::API
 
   def is_connection?
     # @connections = current_account.profile.connections.
-    false
+    true
+  end
+
+  def current_profile
+    current_account.profile
   end
 
   # def authorize!

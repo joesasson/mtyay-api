@@ -4,7 +4,6 @@ module Api::V1
       token = request.headers['HTTP_AUTHORIZATION']
       account_info = Auth.decode(token)
       @profile = Profile.new(profile_params)
-      puts(account_info)
       @profile.account_id = account_info['account_id']
       if @profile.save
         render json: @profile
@@ -18,6 +17,12 @@ module Api::V1
       else
         render json: @profile, serializer: publicProfileSerializer
       end
+    end
+
+    def update
+      @profile = Profile.find(params[:id])
+      @new = @profile.update(picture: params[:profile][:picture])
+      render json: @profile
     end
 
 
@@ -37,7 +42,7 @@ module Api::V1
 
     def profile_params
       params.require(:profile).permit(:name, :bio, :zipcode, :phone,
-      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype)
+      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype, :url)
     end
 
   end

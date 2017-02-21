@@ -9,9 +9,4 @@ class Profile < ApplicationRecord
   has_many :purposes, through: :profile_purposes
 
 
-  def my_origin_stations
-    self.commutes.collect do |commute|
-      commute.origin.id
-    end
-  end
 end
