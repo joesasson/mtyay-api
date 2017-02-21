@@ -8,6 +8,15 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def is_current_account?
+    params[:id].to_i == current_account.id
+  end
+
+  def is_connection?
+    # @connections = current_account.profile.connections.
+    true
+  end
+
   def current_profile
     current_account.profile
   end
