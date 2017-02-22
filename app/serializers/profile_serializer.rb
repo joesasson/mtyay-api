@@ -1,6 +1,5 @@
 class ProfileSerializer < ActiveModel::Serializer
   attributes :id, :picture, :name, :bio, :zipcode, :phone,
-  # Put the below line into a hash and send back as social media
   :socialMedia
 
   has_many :commutes
