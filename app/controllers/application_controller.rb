@@ -13,7 +13,12 @@ class ApplicationController < ActionController::API
   end
 
   def is_connection?
-    # @connections = current_account.profile.connections.
+    # @viewed_profile = Profile.find(params[:id])
+    # @viewed_profile_commutes = @viewed_profile.commute_ids
+    # @approved_connections = Connection.all_by_profile_id(@viewed_profile.id).approved
+    # @shared_commutes = @approved_connections.where(requester_commute_id: @viewed_profile_commutes).or(@approved_connections.where(requestee_commute_id: @viewed_profile_commutes))
+    # binding.pry
+    # @shared_commutes.empty?
     true
   end
 
