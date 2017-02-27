@@ -12,7 +12,7 @@ module Api::V1
 
     def show
       @profile = Profile.find(params[:id])
-      if is_connection? || is_current_account? 
+      if is_connection? || is_current_account?
         render json: @profile
       else
         render json: @profile, serializer: publicProfileSerializer
@@ -21,7 +21,11 @@ module Api::V1
 
     def update
       @profile = Profile.find(params[:id])
-      @new = @profile.update(picture: params[:profile][:picture])
+      if params[:profile][:picture]
+        @profile.update(picture: params[:profile][:picture])
+      else
+        @profile.update(profile_params)
+      end
       render json: @profile
     end
 
@@ -42,7 +46,7 @@ module Api::V1
 
     def profile_params
       params.require(:profile).permit(:name, :bio, :zipcode, :phone,
-      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype, :url)
+      :linkedin, :facebook, :instagram, :goodreads, :picture, :twitter, :skype)
     end
 
   end

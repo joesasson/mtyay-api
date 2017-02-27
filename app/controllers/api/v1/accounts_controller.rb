@@ -5,6 +5,8 @@ module Api::V1
       @account = Account.new(account_params)
       if @account.save
         jwt = Auth.encrypt({ account_id: @account.id })
+        @profile = Profile.new(account_id: @account.id)
+        @profile.save
         render json: { jwt: jwt, id: @account.id, email: @account.email, status: 201 }
       else
         error = @account.save
