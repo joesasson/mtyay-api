@@ -17,7 +17,7 @@ Created by: [Joe Sasson](https://github.com/joesasson), [Patty SantaCruz](https:
 * Back-end API built with Ruby on Rails
 * Uses a PostgreSQL database
 
-**Functionality** 
+**Functionality**
 
 
 **Features**
@@ -39,3 +39,17 @@ Created by: [Joe Sasson](https://github.com/joesasson), [Patty SantaCruz](https:
 
 ## Product Roadmap
 
+## Testing
+
+- Models
+  - Account
+  - Commute
+  - Connection
+  - Station
+- Controllers
+  - Accounts
+  - Commutes
+  - Connections
+  - Stations
+  - Matches
+  - Sessions
