@@ -42,7 +42,8 @@ Created by: [Joe Sasson](https://github.com/joesasson), [Patty SantaCruz](https:
 ## Testing
 
 - [ ] Models
-  - [ ] Account
+  - [x] Account
+  - [x] Profile
   - [ ] Commute
   - [ ] Connection
   - [ ] Station
