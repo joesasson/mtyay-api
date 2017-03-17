@@ -41,15 +41,15 @@ Created by: [Joe Sasson](https://github.com/joesasson), [Patty SantaCruz](https:
 
 ## Testing
 
-- Models
-  - Account
-  - Commute
-  - Connection
-  - Station
+- [ ] Models
+  - [ ] Account
+  - [ ] Commute
+  - [ ] Connection
+  - [ ] Station
 - Controllers
-  - Accounts
-  - Commutes
-  - Connections
-  - Stations
-  - Matches
-  - Sessions
+  - [ ] Accounts
+  - [ ] Commutes
+  - [ ] Connections
+  - [ ] Stations
+  - [ ] Matches
+  - [ ] Sessions
