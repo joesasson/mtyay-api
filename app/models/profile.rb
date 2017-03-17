@@ -7,6 +7,7 @@ class Profile < ApplicationRecord
   has_many :interests, through: :profile_interests
   has_many :profile_purposes
   has_many :purposes, through: :profile_purposes
+  validates :name, :bio, :phone, presence: true
 
 
 end
